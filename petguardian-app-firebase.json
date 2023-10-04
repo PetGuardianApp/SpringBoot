@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "petguardian-app",
+  "private_key_id": "9db06879e5eb528fcb04c40c70b15f647aa575fb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCv8Z444cNdNKav\n8RNQOx0g8mFsEDXlEQPtREV7A8two88I+gbIerT88CdSLIYwCpcj+7I/6hW8PdL5\nJOiQN9YtbvTmUc3M/J37pIHzabsW7/l5k2HaJnapUOWxWt/poaBUKvBJoKArZVR2\n4iPQ9r0n9ZNWa4EHIQw8wcgsyGoHNqhgRptKSP6ZpFJTGhEjwYvRt0CKc6Y8ud/f\nqBzPB6YdyVFzL1ZKK/y246X1blh2TevLZt7HkQOnJRArP/bAe2oJR8hs+LyAlkqU\nD6Wmjx/KaUuFSiQWnfMd6xT0AAa73wbLe6ZQynE8mtoQrezJH+Ykbgs7GsyAUnIo\nu8ueocV1AgMBAAECggEAOv7CdgJFdsBL0Bz+w90+dCixwAFjgO6GqY1F2uy3z4ot\nxq3HjnuOqm2AUc56JCu46CjiaQn9xcPZNQ9KJ+mBGHTnCz+MyVo/QvyzUkI2qIdI\n2JoxqmtRSI7GpgR5piY6014eeiGw8zwj6UUEi3HglUCD6etcNV7AcrLrgxCkdMww\nfDqyDGksUW099zhU8AfMePDQUbM1jzpeRdIcBYiqHeP3pqhK4twrgSlnobziagd+\n7I2Wi6D2Y50DJEe+pZc5GKVIcGwybSQObAmFpnusDOkziT4Xwk9Fqkn4KMrhgSxq\nHLpZBuN4WYNoGMrCTH73LRY4u6mBfjvdonTtJsC2tQKBgQDxpR/eKZv1YOy4Bls/\nNeE/r6Aga5uy/33p3BYnHbvTcJehJOaoGJRtA7mVj04KQ5vH2m3HT0woqagbasPI\nG3BQgxJQFJF+JZurevra5FwCWpvkxwQlwlWBtf44VJSyNYNsk+t+SB04sjciIYUu\n4ua+/WBNYZ+xpEgWxl6rNb7hKwKBgQC6ZVOcHIatUo+m1FHq78ouO07yhJi/f4tq\nxpR9UkYnVuGXZERx/5paXTbwdD1PqrkGnmINrn3wMokk91gpmLU78E8cIWjmSsfJ\npyMZ89i1NmzVJDA+X8Hp5ySlguCUeAed+muvMJgS9Yufd72iYUZhCe/K5gBc53br\nz+7zANhj3wKBgGxPZhRPNC9tDU2C091mShsgnjZJ5VT6/bYXxvorcqfYPK6m+pf3\nxHeEhueJfyJMoYOX3ULLwUgsm0QGu9BytAnyZf/s6DXRp4/aJJx+ZNtNP7jwl2RR\nUcA9EcCv8KJcKBc/yfslWauy/dFXkvmsDF8o9MRacJjQGNvUeFRnV7JXAoGBAJF3\nRnsM4CYfyrA9/vhEzxqpeoFV7gd1OI7KD1SGgu1spn4J6Ei3W/StzpR1guvLpr59\nmLRouyxbpCBPUGSWIsp2Tqb7g+xF7Al6ALDeVv+FTAZDSctD3Af5NeZdb3su+XLW\n3ndIi0YwjxiS0FILbGuK37MPMLVQhsSd8DOBM18tAoGAcOAhkFQWdfWvC26qiqlp\nPxDz6PFebUdBgv+3hnPm08cHj04rXunMAWtJ/RaTP+cARM+V4Pkf2YWaL1EpcY11\nGFvUMcQcg2h5sY0f23Wk10wp3Ditsn15MR2DcGVdKx0W/y0v/FMoA8B/QiifxVSy\nijsY4z7kLyqaz3yZam/w1Ag=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-wmutm@petguardian-app.iam.gserviceaccount.com",
+  "client_id": "102237959062967735857",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-wmutm%40petguardian-app.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
