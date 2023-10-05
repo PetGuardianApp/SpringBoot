@@ -7,6 +7,7 @@ public class Pets {
     String birth;
     String breed;
     Map<String,Integer> weight = new HashMap<>();
+    Map<Object, Object> health_info = new HashMap<>();
     Integer height;
     String name;
     String type;
@@ -33,6 +34,14 @@ public class Pets {
 
     public void setWeight(Map<String, Integer> weight) {
         this.weight = weight;
+    }
+
+     public Map<Object,Object> getHealth_info() {
+        return this.health_info;
+    }
+
+    public void setHealth_info(Map<Object,Object> health_info) {
+        this.health_info = health_info;
     }
 
     public Integer getHeight() {
