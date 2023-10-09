@@ -7,11 +7,12 @@ import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.Firestore;
 
 import pet.guardian.PetGuardian.commons.GenericServiceImpl;
+import pet.guardian.PetGuardian.dto.ClientDTO;
 import pet.guardian.PetGuardian.model.Client;
 import pet.guardian.PetGuardian.service.api.ClientServiceAPI;
 
 @Service
-public class ClientServiceImpl extends GenericServiceImpl<Client, Client> implements ClientServiceAPI {
+public class ClientServiceImpl extends GenericServiceImpl<Client, ClientDTO> implements ClientServiceAPI {
 
     @Autowired
     private Firestore firestore;
