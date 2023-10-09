@@ -1,7 +1,5 @@
 package pet.guardian.PetGuardian.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,13 +25,13 @@ public class ClientRestController {
     private ClientServiceAPI clientServiceAPI;
 
     @GetMapping(value = "/all")
-    public List<Client> getAllClient() throws Exception {
-        return clientServiceAPI.getAll();
+    public ResponseEntity<Object> getAllClient() throws Exception {
+        return new ResponseEntity<>(clientServiceAPI.getAll(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/find/{id}")
-    public Client findClient(@PathVariable String id) throws Exception {
-        return clientServiceAPI.get(id);
+    public ResponseEntity<Object> findClient(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(clientServiceAPI.get(id), HttpStatus.OK);
     }
 
     @PostMapping(value = "/create")

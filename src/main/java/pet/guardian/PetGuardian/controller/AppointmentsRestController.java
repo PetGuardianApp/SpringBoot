@@ -1,7 +1,5 @@
 package pet.guardian.PetGuardian.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,13 +25,13 @@ public class AppointmentsRestController {
     private AppointmentsServiceAPI appointmentsServiceAPI;
 
     @GetMapping(value = "/all")
-    public List<Appointments> getAllAppointment() throws Exception {
-        return appointmentsServiceAPI.getAll();
+    public ResponseEntity<Object> getAllAppointment() throws Exception {
+        return new ResponseEntity<>(appointmentsServiceAPI.getAll(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/find/{id}")
-    public Appointments findAppointment(@PathVariable String id) throws Exception {
-        return appointmentsServiceAPI.get(id);
+    public ResponseEntity<Object> findAppointment(@PathVariable String id) throws Exception {
+        return new ResponseEntity<Object>(appointmentsServiceAPI.get(id), HttpStatus.OK);
     }
 
     @PostMapping(value = "/create")

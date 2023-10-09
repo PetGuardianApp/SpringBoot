@@ -1,11 +1,11 @@
 package pet.guardian.PetGuardian.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pet.guardian.PetGuardian.model.Vet;
 import pet.guardian.PetGuardian.service.api.VetServiceAPI;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/vet")
@@ -16,28 +16,35 @@ public class VetRestController {
     private VetServiceAPI vetServiceAPI;
 
     @GetMapping(value = "/all")
-    public List<Vet> getAll() throws Exception {
-        return vetServiceAPI.getAll();
+    public ResponseEntity<Object> getAll() throws Exception {
+        return new ResponseEntity<>(vetServiceAPI.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{id}")
-    public Vet findVet(@PathVariable String id) throws Exception {
-        return vetServiceAPI.get(id);
+    @GetMapping(value = "/find/{id}")
+    public ResponseEntity<Object> findVet(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(vetServiceAPI.get(id), HttpStatus.OK);
     }
 
-    @PostMapping
-    public void saveVet(@RequestBody Vet vet) throws Exception {
-        vetServiceAPI.save(vet);
+    @PostMapping(value = "/create")
+    public ResponseEntity<Object> createVet(@RequestBody Vet vet) throws Exception {
+        String id = vetServiceAPI.save(vet);
+        return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
-    public void updatePet(@PathVariable String id, @RequestBody Vet vet) throws Exception {
-        vetServiceAPI.save(vet, id);
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Object> updatePet(@PathVariable String id, @RequestBody Vet vet) throws Exception {
+        id = vetServiceAPI.save(vet, id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteVet(@PathVariable String id) throws Exception {
-        vetServiceAPI.delete(id);
+    public ResponseEntity<Object> deleteVet(@PathVariable String id) throws Exception {
+        Vet vet = vetServiceAPI.get(id);
+        if (vet != null)
+            vetServiceAPI.delete(id);
+        else
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(vet, HttpStatus.OK);
     }
 
 }
