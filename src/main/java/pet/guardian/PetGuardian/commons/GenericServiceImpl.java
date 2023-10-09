@@ -2,18 +2,21 @@ package pet.guardian.PetGuardian.commons;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
+import org.apache.commons.beanutils.PropertyUtils;
 import org.springframework.stereotype.Service;
+import pet.guardian.PetGuardian.model.Pets;
+
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import org.apache.commons.beanutils.PropertyUtils;
 
 @SuppressWarnings("unchecked")
 @Service
 public abstract class GenericServiceImpl<I, O> implements GenericServiceAPI<I, O> {
 
     public Class<O> clazz;
+    private Firestore firestore;
 
     @SuppressWarnings("unchecked")
     public GenericServiceImpl() {
@@ -80,4 +83,6 @@ public abstract class GenericServiceImpl<I, O> implements GenericServiceAPI<I, O
     }
 
     public abstract CollectionReference getCollection();
+
+
 }

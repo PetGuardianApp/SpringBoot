@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pet.guardian.PetGuardian.model.Pets;
 import pet.guardian.PetGuardian.service.api.PetsServiceAPI;
-
 @RestController
 @RequestMapping(value = "/pets")
 @CrossOrigin("*")
