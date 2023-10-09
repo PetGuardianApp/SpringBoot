@@ -11,6 +11,7 @@ import java.util.List;
 @RequestMapping(value = "/vet")
 @CrossOrigin("*")
 public class VetRestController {
+
     @Autowired
     private VetServiceAPI vetServiceAPI;
 
