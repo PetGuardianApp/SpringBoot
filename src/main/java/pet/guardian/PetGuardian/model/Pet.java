@@ -1,13 +1,14 @@
 package pet.guardian.PetGuardian.model;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Pet {
     String birth;
     String breed;
-    Map<String, Integer> weight = new HashMap<>();
-    Map<Object, Object> health_info = new HashMap<>();
+    Map<String, String> weight = new HashMap<>();
+    Map<String, Object> health_info = new HashMap<>();
     Integer height;
     String name;
     String type;
@@ -31,19 +32,19 @@ public class Pet {
         this.breed = breed;
     }
 
-    public Map<String, Integer> getWeight() {
+    public Map<String, String> getWeight() {
         return weight;
     }
 
-    public void setWeight(Map<String, Integer> weight) {
+    public void setWeight(Map<String, String> weight) {
         this.weight = weight;
     }
 
-    public Map<Object, Object> getHealth_info() {
+    public Map<String, Object> getHealth_info() {
         return this.health_info;
     }
 
-    public void setHealth_info(Map<Object, Object> health_info) {
+    public void setHealth_info(Map<String, Object> health_info) {
         this.health_info = health_info;
     }
 

@@ -2,18 +2,21 @@ package pet.guardian.PetGuardian.model;
 
 import com.google.cloud.firestore.GeoPoint;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Vet {
-    GeoPoint clinic_address;
+    Map<String,String> clinic_address = new HashMap<>();
     String email;
     String name;
     String surname;
     Integer phone;
 
-    public GeoPoint getClinic_address() {
+    public Map<String, String> getClinic_address() {
         return clinic_address;
     }
 
-    public void setClinic_address(GeoPoint clinic_address) {
+    public void setClinic_address(Map<String, String> clinic_address) {
         this.clinic_address = clinic_address;
     }
 

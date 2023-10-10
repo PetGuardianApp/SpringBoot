@@ -25,9 +25,9 @@ public class VetRestController {
         return new ResponseEntity<>(vetServiceAPI.get(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/create")
-    public ResponseEntity<Object> createVet(@RequestBody Vet vet) throws Exception {
-        String id = vetServiceAPI.save(vet);
+    @PostMapping(value = "/create/{id}")
+    public ResponseEntity<Object> createVet(@RequestBody Vet vet, @PathVariable String id) throws Exception {
+        id = vetServiceAPI.save(vet, id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
@@ -37,7 +37,7 @@ public class VetRestController {
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Object> deleteVet(@PathVariable String id) throws Exception {
         Vet vet = vetServiceAPI.get(id);
         if (vet != null)

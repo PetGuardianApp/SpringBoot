@@ -16,7 +16,7 @@ public class PetServiceImpl extends GenericServiceImpl<Pet, PetDTO> implements P
 
     @Override
     public CollectionReference getCollection() {
-        return firestore.collection("/pets");
+        return firestore.collection("pet");
     }
 
 
