@@ -1,11 +1,12 @@
 package pet.guardian.PetGuardian.dto;
 
-import pet.guardian.PetGuardian.model.Appointments;
+import pet.guardian.PetGuardian.model.Pet;
 
-public class AppointmentsDTO extends Appointments {
+public class PetDTO extends Pet {
 
     private String id;
-    
+
+
     public String getId() {
         return this.id;
     }

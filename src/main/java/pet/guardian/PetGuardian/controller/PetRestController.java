@@ -4,15 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pet.guardian.PetGuardian.model.Pets;
-import pet.guardian.PetGuardian.service.api.PetsServiceAPI;
+import pet.guardian.PetGuardian.model.Pet;
+import pet.guardian.PetGuardian.service.api.PetServiceAPI;
 
 @RestController
-@RequestMapping(value = "/pets")
+@RequestMapping(value = "/pet")
 @CrossOrigin("*")
-public class PetsRestController {
+public class PetRestController {
     @Autowired
-    private PetsServiceAPI petsServiceAPI;
+    private PetServiceAPI petsServiceAPI;
 
     @GetMapping(value = "/all")
     public ResponseEntity<Object> getAllPets() throws Exception {
@@ -25,19 +25,19 @@ public class PetsRestController {
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<Object> createPet(@RequestBody Pets pet) throws Exception {
+    public ResponseEntity<Object> createPet(@RequestBody Pet pet) throws Exception {
         String id = petsServiceAPI.save(pet);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Object> updatePet(@PathVariable String id, @RequestBody Pets pet) throws Exception {
+    public ResponseEntity<Object> updatePet(@PathVariable String id, @RequestBody Pet pet) throws Exception {
         return new ResponseEntity<>(petsServiceAPI.save(pet, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteVet(@PathVariable String id) throws Exception {
-        Pets pet = petsServiceAPI.get(id);
+        Pet pet = petsServiceAPI.get(id);
         if (pet != null)
             petsServiceAPI.delete(id);
         else

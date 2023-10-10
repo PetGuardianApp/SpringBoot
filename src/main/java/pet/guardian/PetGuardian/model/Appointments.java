@@ -53,8 +53,4 @@ public class Appointments {
         this.pet_id = pet_id;
     }
 
-
-
-
-    
 }
