@@ -20,11 +20,6 @@ public class ClientRestController {
     public ResponseEntity<Object> getAllClient() throws Exception {
         return new ResponseEntity<>(clientServiceAPI.getAll(), HttpStatus.OK);
     }
-    @GetMapping(value = "/{id}/pets")
-    public ResponseEntity<Object> getAllPets(@PathVariable String id) throws Exception {
-        return new ResponseEntity<>(clientServiceAPI.getAllPets(id), HttpStatus.OK);
-    }
-
 
     @PostMapping(value = "/create")
     public ResponseEntity<String> createClient(@RequestBody Client client) throws Exception {

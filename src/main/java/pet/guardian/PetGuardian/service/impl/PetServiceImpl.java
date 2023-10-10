@@ -1,17 +1,16 @@
 package pet.guardian.PetGuardian.service.impl;
 
-import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pet.guardian.PetGuardian.commons.GenericServiceImpl;
-import pet.guardian.PetGuardian.dto.PetsDTO;
-import pet.guardian.PetGuardian.model.Pets;
-import pet.guardian.PetGuardian.service.api.PetsServiceAPI;
+import pet.guardian.PetGuardian.dto.PetDTO;
+import pet.guardian.PetGuardian.model.Pet;
+import pet.guardian.PetGuardian.service.api.PetServiceAPI;
 
 
 @Service
-public class PetServiceImpl extends GenericServiceImpl<Pets, PetsDTO> implements PetsServiceAPI {
+public class PetServiceImpl extends GenericServiceImpl<Pet, PetDTO> implements PetServiceAPI {
     @Autowired
     private Firestore firestore;
 

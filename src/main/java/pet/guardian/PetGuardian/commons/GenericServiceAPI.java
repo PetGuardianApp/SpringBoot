@@ -1,11 +1,11 @@
 package pet.guardian.PetGuardian.commons;
 
-import pet.guardian.PetGuardian.model.Pets;
+import pet.guardian.PetGuardian.model.Pet;
 
 import java.util.List;
 import java.util.Map;
 
-public interface GenericServiceAPI<I,O> {
+public interface GenericServiceAPI<I, O> {
 
     String save(I entity, String id) throws Exception;
 
@@ -18,6 +18,4 @@ public interface GenericServiceAPI<I,O> {
     Map<String, Object> getAsMap(String id) throws Exception;
 
     List<O> getAll() throws Exception;
-
-    List<Pets> getAllPets(String id) throws Exception;
 }

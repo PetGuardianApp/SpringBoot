@@ -1,8 +1,8 @@
 package pet.guardian.PetGuardian.dto;
 
-import pet.guardian.PetGuardian.model.Pets;
+import pet.guardian.PetGuardian.model.Pet;
 
-public class PetsDTO extends Pets {
+public class PetDTO extends Pet {
 
     private String id;
 

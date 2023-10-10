@@ -4,7 +4,7 @@ import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.springframework.stereotype.Service;
-import pet.guardian.PetGuardian.model.Pets;
+import pet.guardian.PetGuardian.model.Pet;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
