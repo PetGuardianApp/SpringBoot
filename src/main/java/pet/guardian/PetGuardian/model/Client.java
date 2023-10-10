@@ -1,13 +1,14 @@
 package pet.guardian.PetGuardian.model;
 
-import com.google.cloud.firestore.GeoPoint;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Client {
     private String name;
     private Integer phone;
     private String email;
     private String surnames;
-    private GeoPoint address;
+    private Map<String, String> address = new HashMap<>();
 
     public String getName() {
         return name;
@@ -41,11 +42,11 @@ public class Client {
         this.surnames = surnames;
     }
 
-    public GeoPoint getAddress() {
+    public Map<String, String> getAddress() {
         return address;
     }
 
-    public void setAddress(GeoPoint address) {
+    public void setAddress(Map<String, String> address) {
         this.address = address;
     }
 }

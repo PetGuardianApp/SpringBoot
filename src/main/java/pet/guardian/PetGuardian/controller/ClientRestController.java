@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pet.guardian.PetGuardian.model.Client;
 import pet.guardian.PetGuardian.service.api.ClientServiceAPI;
-import pet.guardian.PetGuardian.service.impl.PetServiceImpl;
 
 @RestController
 @RequestMapping(value = "/client")
@@ -21,9 +20,14 @@ public class ClientRestController {
         return new ResponseEntity<>(clientServiceAPI.getAll(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/create")
-    public ResponseEntity<String> createClient(@RequestBody Client client) throws Exception {
-        String id = clientServiceAPI.save(client);
+    @GetMapping(value = "/find/{id}")
+    public ResponseEntity<Object> getClient(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(clientServiceAPI.get(id), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/create/{id}")
+    public ResponseEntity<String> createClient(@RequestBody Client client, @PathVariable String id) throws Exception {
+        id = clientServiceAPI.save(client, id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
