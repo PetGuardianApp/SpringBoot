@@ -40,9 +40,8 @@ public abstract class GenericServiceImpl<I, O> implements GenericServiceAPI<I, O
     }
 
     @Override
-    public Vet delete(String id) throws Exception {
+    public void delete(String id) throws Exception {
         getCollection().document(id).delete().get();
-        return null;
     }
 
     @Override

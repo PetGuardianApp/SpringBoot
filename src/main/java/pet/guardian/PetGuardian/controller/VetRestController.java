@@ -57,8 +57,8 @@ public class VetRestController {
                 }
             }
         });
-        Vet vet = vetServiceAPI.delete(id);
-        return new ResponseEntity<>(vet, HttpStatus.OK);
+        vetServiceAPI.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

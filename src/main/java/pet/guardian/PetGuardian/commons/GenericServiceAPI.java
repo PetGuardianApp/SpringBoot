@@ -11,7 +11,7 @@ public interface GenericServiceAPI<I, O> {
 
     String save(I entity) throws Exception;
 
-    Vet delete(String id) throws Exception;
+    void delete(String id) throws Exception;
 
     O get(String id) throws Exception;
 
