@@ -21,4 +21,6 @@ public class ClientServiceImpl extends GenericServiceImpl<Client, ClientDTO> imp
     public CollectionReference getCollection() {
         return firestore.collection("client");
     }
+
+
 }

@@ -33,7 +33,7 @@ public class PetRestController {
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PatchMapping("/update/{id}")
     public ResponseEntity<Object> updatePet(@PathVariable String id, @RequestBody Pet pet) throws Exception {
         return new ResponseEntity<>(petServiceAPI.save(pet, id), HttpStatus.OK);
     }

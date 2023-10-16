@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pet.guardian.PetGuardian.dto.PetDTO;
 import pet.guardian.PetGuardian.model.Client;
-import pet.guardian.PetGuardian.model.Vet;
 import pet.guardian.PetGuardian.service.api.ClientServiceAPI;
 import pet.guardian.PetGuardian.service.api.PetServiceAPI;
 
@@ -38,7 +37,7 @@ public class ClientRestController {
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PatchMapping("/update/{id}")
     public ResponseEntity<String> updateClient(@PathVariable String id, @RequestBody Client client) throws Exception {
         id = clientServiceAPI.save(client, id);
         return new ResponseEntity<>(id, HttpStatus.OK);
