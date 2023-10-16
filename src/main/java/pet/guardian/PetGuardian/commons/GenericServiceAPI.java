@@ -1,6 +1,6 @@
 package pet.guardian.PetGuardian.commons;
 
-import pet.guardian.PetGuardian.model.Pet;
+import pet.guardian.PetGuardian.model.Vet;
 
 import java.util.List;
 import java.util.Map;
