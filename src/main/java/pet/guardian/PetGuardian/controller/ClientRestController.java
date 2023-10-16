@@ -39,8 +39,8 @@ public class ClientRestController {
 
     @PatchMapping("/update/{id}")
     public ResponseEntity<String> updateClient(@PathVariable String id, @RequestBody Client client) throws Exception {
-        id = clientServiceAPI.save(client, id);
-        return new ResponseEntity<>(id, HttpStatus.OK);
+        Client new_client = patchClient(clientServiceAPI.get(id), client);
+        return new ResponseEntity<>(clientServiceAPI.save(new_client, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -58,5 +58,21 @@ public class ClientRestController {
         });
         clientServiceAPI.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    private Client patchClient(Client clientToUpdate, Client client){
+        if (client.getName() != null){
+            clientToUpdate.setName(client.getName());
+        }
+        if (client.getPhone() != null){
+            clientToUpdate.setPhone(client.getPhone());
+        }
+        if (client.getEmail()!= null)
+            clientToUpdate.setEmail(client.getEmail());
+        if (client.getSurnames() != null)
+            clientToUpdate.setSurnames(client.getSurnames());
+        if (client.getAddress() != null)
+            clientToUpdate.setAddress(client.getAddress());
+        return clientToUpdate;
     }
 }

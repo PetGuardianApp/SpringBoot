@@ -32,7 +32,8 @@ public class PetRestController {
 
     @PatchMapping("/update/{id}")
     public ResponseEntity<Object> updatePet(@PathVariable String id, @RequestBody Pet pet) throws Exception {
-        return new ResponseEntity<>(petServiceAPI.save(pet, id), HttpStatus.OK);
+        Pet new_pet = patchPet(petServiceAPI.get(id), pet);
+        return new ResponseEntity<>(petServiceAPI.save(new_pet, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -63,6 +64,15 @@ public class PetRestController {
         }
         if (pet.getHeight() != null) {
             petToUpdate.setHeight(pet.getHeight());
+        }
+        if (pet.getType() != null) {
+            petToUpdate.setType(pet.getType());
+        }
+        if (pet.getVet_id() != null) {
+            petToUpdate.setVet_id(pet.getVet_id());
+        }
+        if (pet.getClient_id() != null) {
+            petToUpdate.setClient_id(pet.getClient_id());
         }
         return petToUpdate;
     }
