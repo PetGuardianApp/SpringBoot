@@ -39,7 +39,7 @@ public class PetRestController {
         return new ResponseEntity<>(petServiceAPI.save(pet, id), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Object> deleteVet(@PathVariable String id) throws Exception {
         Pet pet = petServiceAPI.get(id);
         if (pet != null)
