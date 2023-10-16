@@ -1,5 +1,5 @@
               CLIENT
-- Tots els Clients d'un Veterinari.
+- Tots els Clients d'un Veterinari.✅
 - Totes les mascotes d'un client.
 - Si elimines un client s'han d'eliminar totes les mascotes associades a ell. ✅
   
@@ -10,4 +10,4 @@
 - Obtenir tots els appointments d'un veterinari/client.  
 
               GENERAL
-- Tots els PATCH que se pugue modificar només un atribut enviant des del front només el JSON amb l'atribut a modificar i el seu valor.
+- Tots els PATCH que se pugue modificar només un atribut enviant des del front només el JSON amb l'atribut a modificar i el seu valor.✅
