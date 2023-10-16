@@ -4,8 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pet.guardian.PetGuardian.dto.PetDTO;
 import pet.guardian.PetGuardian.model.Vet;
+import pet.guardian.PetGuardian.service.api.PetServiceAPI;
 import pet.guardian.PetGuardian.service.api.VetServiceAPI;
+
+import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(value = "/vet")
@@ -14,6 +19,8 @@ public class VetRestController {
 
     @Autowired
     private VetServiceAPI vetServiceAPI;
+    @Autowired
+    private PetServiceAPI petServiceAPI;
 
     @GetMapping(value = "/all")
     public ResponseEntity<Object> getAll() throws Exception {
@@ -32,18 +39,25 @@ public class VetRestController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Object> updatePet(@PathVariable String id, @RequestBody Vet vet) throws Exception {
+    public ResponseEntity<Object> updateVet(@PathVariable String id, @RequestBody Vet vet) throws Exception {
         id = vetServiceAPI.save(vet, id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Object> deleteVet(@PathVariable String id) throws Exception {
-        Vet vet = vetServiceAPI.get(id);
-        if (vet != null)
-            vetServiceAPI.delete(id);
-        else
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        List<PetDTO> pets = petServiceAPI.getAll();
+        pets.forEach(pet -> {
+            if (Objects.equals(pet.getVet_id(), id)) {
+                try {
+                    pet.setVet_id("null");
+                    petServiceAPI.save(pet,pet.getId());
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        Vet vet = vetServiceAPI.delete(id);
         return new ResponseEntity<>(vet, HttpStatus.OK);
     }
 

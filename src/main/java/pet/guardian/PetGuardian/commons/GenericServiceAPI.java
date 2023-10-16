@@ -1,6 +1,6 @@
 package pet.guardian.PetGuardian.commons;
 
-import pet.guardian.PetGuardian.model.Pet;
+import pet.guardian.PetGuardian.model.Vet;
 
 import java.util.List;
 import java.util.Map;
@@ -11,7 +11,7 @@ public interface GenericServiceAPI<I, O> {
 
     String save(I entity) throws Exception;
 
-    void delete(String id) throws Exception;
+    Vet delete(String id) throws Exception;
 
     O get(String id) throws Exception;
 

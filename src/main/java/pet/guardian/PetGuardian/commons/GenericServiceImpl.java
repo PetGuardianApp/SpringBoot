@@ -4,7 +4,7 @@ import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.springframework.stereotype.Service;
-import pet.guardian.PetGuardian.model.Pet;
+import pet.guardian.PetGuardian.model.Vet;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
@@ -40,8 +40,9 @@ public abstract class GenericServiceImpl<I, O> implements GenericServiceAPI<I, O
     }
 
     @Override
-    public void delete(String id) throws Exception {
+    public Vet delete(String id) throws Exception {
         getCollection().document(id).delete().get();
+        return null;
     }
 
     @Override

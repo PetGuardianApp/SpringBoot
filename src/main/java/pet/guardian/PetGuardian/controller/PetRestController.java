@@ -19,7 +19,6 @@ public class PetRestController {
 
     @GetMapping(value = "/all")
     public ResponseEntity<Object> getAllPets() throws Exception {
-        List<PetDTO> pet = petServiceAPI.getAll();
         return new ResponseEntity<>(petServiceAPI.getAll(), HttpStatus.OK);
     }
 
@@ -40,7 +39,7 @@ public class PetRestController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteVet(@PathVariable String id) throws Exception {
+    public ResponseEntity<Object> deletePet(@PathVariable String id) throws Exception {
         Pet pet = petServiceAPI.get(id);
         if (pet != null)
             petServiceAPI.delete(id);
