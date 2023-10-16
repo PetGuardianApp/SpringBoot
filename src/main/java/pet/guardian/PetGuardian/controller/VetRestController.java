@@ -40,7 +40,8 @@ public class VetRestController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Object> updateVet(@PathVariable String id, @RequestBody Vet vet) throws Exception {
-        id = vetServiceAPI.save(vet, id);
+        Vet mew_vet = patchVet(vetServiceAPI.get(id), vet);
+        id = vetServiceAPI.save(mew_vet, id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
@@ -51,7 +52,7 @@ public class VetRestController {
             if (Objects.equals(pet.getVet_id(), id)) {
                 try {
                     pet.setVet_id("null");
-                    petServiceAPI.save(pet,pet.getId());
+                    petServiceAPI.save(pet, pet.getId());
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
@@ -61,4 +62,22 @@ public class VetRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    private Vet patchVet(Vet vetToUpdate, Vet vet) {
+        if (vet.getName() != null) {
+            vetToUpdate.setName(vet.getName());
+        }
+        if (vet.getEmail() != null) {
+            vetToUpdate.setEmail(vet.getEmail());
+        }
+        if (vet.getPhone() != null) {
+            vetToUpdate.setPhone(vet.getPhone());
+        }
+        if (vet.getSurname() != null) {
+            vetToUpdate.setSurname(vet.getSurname());
+        }
+        if (vet.getClinic_address() != null) {
+            vetToUpdate.setClinic_address(vet.getClinic_address());
+        }
+        return vetToUpdate;
+    }
 }
