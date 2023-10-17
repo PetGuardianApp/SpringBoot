@@ -1,8 +1,10 @@
 package pet.guardian.PetGuardian.controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import pet.guardian.PetGuardian.dto.AppointmentsDTO;
 import pet.guardian.PetGuardian.dto.ClientDTO;
 import pet.guardian.PetGuardian.dto.PetDTO;
 import pet.guardian.PetGuardian.model.Vet;
+import pet.guardian.PetGuardian.service.api.AppointmentsServiceAPI;
 import pet.guardian.PetGuardian.service.api.ClientServiceAPI;
 import pet.guardian.PetGuardian.service.api.PetServiceAPI;
 import pet.guardian.PetGuardian.service.api.VetServiceAPI;
@@ -35,6 +39,8 @@ public class VetRestController {
     private PetServiceAPI petServiceAPI;
     @Autowired
     private ClientServiceAPI clientServiceAPI;
+    @Autowired
+    private AppointmentsServiceAPI appointmentsServiceAPI;
 
     @GetMapping(value = "/all")
     public ResponseEntity<Object> getAll() throws Exception {
@@ -49,16 +55,43 @@ public class VetRestController {
     @GetMapping(value = "/findClients/{id}")
     public ResponseEntity<Object> findVetClients(@PathVariable String id) throws Exception {
         List<ClientDTO> clients = new ArrayList<>();
+        Set<String> clientIds = new HashSet<>();
         List<PetDTO> pets = petServiceAPI.getAll();
         for (PetDTO pet : pets) {
-            if (Objects.equals(pet.getVet_id(), id)){
-                if (pet.getClient_id() != null) {
+            if (Objects.equals(pet.getVet_id(), id)) {
+                if (pet.getClient_id() != null && clientIds.add(pet.getClient_id())) {
                     clients.add(clientServiceAPI.get(pet.getClient_id()));
                 }
             }
         }
         return new ResponseEntity<Object>(clients, HttpStatus.OK);
+    }
 
+    @GetMapping(value = "/findAppointments/{id}")
+    public ResponseEntity<Object> getAppointments(@PathVariable String id) throws Exception {
+        List<AppointmentsDTO> all_appointments = appointmentsServiceAPI.getAll();
+        List<AppointmentsDTO> vet_appointments = new ArrayList<>();
+        List<PetDTO> all_vet_pets = getAllPets(id);
+        for (PetDTO pet : all_vet_pets) {
+            for (AppointmentsDTO appoint : all_appointments) {
+                if (Objects.equals(pet.getId(), appoint.getPet_id())) {
+                    vet_appointments.add(appoint);
+                }
+
+            }
+        }
+        return new ResponseEntity<Object>(vet_appointments, HttpStatus.OK);
+    }
+
+    public List<PetDTO> getAllPets(String id) throws Exception {
+        List<PetDTO> client_pets = new ArrayList<>();
+        List<PetDTO> all_pets = petServiceAPI.getAll();
+        for (PetDTO pet : all_pets) {
+            if (Objects.equals(pet.getVet_id(), id)) {
+                client_pets.add(pet);
+            }
+        }
+        return client_pets;
     }
 
     @PostMapping(value = "/create/{id}")
