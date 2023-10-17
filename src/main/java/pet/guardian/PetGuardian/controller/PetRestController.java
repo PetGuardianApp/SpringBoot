@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import pet.guardian.PetGuardian.model.Pet;
 import pet.guardian.PetGuardian.service.api.PetServiceAPI;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping(value = "/pet")
 @CrossOrigin("*")
@@ -28,6 +30,13 @@ public class PetRestController {
     public ResponseEntity<Object> createPet(@RequestBody Pet pet) throws Exception {
         String id = petServiceAPI.save(pet);
         return new ResponseEntity<>(id, HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/add/{id}/health_info")
+    public ResponseEntity<Object> createPetHealthInfo(@PathVariable String id, @RequestBody Pet pet) throws Exception {
+        Pet new_pet = petServiceAPI.get(id);
+        new_pet.addHealth_InfoElement(pet.getHealth_info());
+        return new ResponseEntity<>(new_pet,HttpStatus.OK);
     }
 
     @PatchMapping("/update/{id}")

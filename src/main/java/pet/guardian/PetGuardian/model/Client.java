@@ -10,6 +10,8 @@ public class Client {
     private String surnames;
     private Map<String, String> address = new HashMap<>();
 
+    private String profile_image;
+
     public String getName() {
         return name;
     }
@@ -48,5 +50,13 @@ public class Client {
 
     public void setAddress(Map<String, String> address) {
         this.address = address;
+    }
+
+    public String getProfile_image() {
+        return profile_image;
+    }
+
+    public void setProfile_image(String profile_image) {
+        this.profile_image = profile_image;
     }
 }

@@ -14,7 +14,7 @@ public class Pet {
     String type;
     String vet_id;
     String client_id;
-
+    private String profile_image;
 
     public String getBirth() {
         return birth;
@@ -47,6 +47,11 @@ public class Pet {
     public void setHealth_info(Map<String, Object> health_info) {
         this.health_info = health_info;
     }
+
+    public void addHealth_InfoElement(Map<String,Object> entry){
+        this.health_info.putAll(entry);
+    }
+
 
     public Integer getHeight() {
         return height;
@@ -86,5 +91,13 @@ public class Pet {
 
     public void setClient_id(String client_id) {
         this.client_id = client_id;
+    }
+
+    public String getProfile_image() {
+        return profile_image;
+    }
+
+    public void setProfile_image(String profile_image) {
+        this.profile_image = profile_image;
     }
 }
