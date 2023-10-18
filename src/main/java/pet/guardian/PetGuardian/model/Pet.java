@@ -1,7 +1,7 @@
 package pet.guardian.PetGuardian.model;
 
-import java.sql.Timestamp;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Pet {
@@ -48,10 +48,44 @@ public class Pet {
         this.health_info = health_info;
     }
 
-    public void addHealth_InfoElement(Map<String,Object> entry){
-        this.health_info.putAll(entry);
+    @SuppressWarnings("unchecked")
+    public void addHealth_InfoElement(Map<String, Object> entry) {
+        for (Map.Entry<String, Object> element : entry.entrySet()) {
+            switch (element.getKey()) {
+                case "observations":
+                    String observation_new = (String) element.getValue();
+                    this.health_info.put("observations", observation_new);
+                    break;
+                case "cardiac_freq":
+                    Map<String, String> cardiac_freq_new = (Map<String, String>) element.getValue();
+                    Map<String, String> cardiac_freq_actual = (Map<String, String>) this.health_info
+                            .get("cardiac_freq");
+                    for (Map.Entry<String, String> elem_cardiac_freq : cardiac_freq_new.entrySet()) {
+                        String key = elem_cardiac_freq.getKey(); // Get the key
+                        String value = elem_cardiac_freq.getValue(); // Get the value
+                        cardiac_freq_actual.put(key, value);
+                    }
+                    break;
+                case "steps":
+                    Map<String, String> steps_new = (Map<String, String>) element.getValue();
+                    Map<String, String> steps_actual = (Map<String, String>) this.health_info
+                            .get("steps");
+                    for (Map.Entry<String, String> elem_steps : steps_new.entrySet()) {
+                        String key = elem_steps.getKey(); // Get the key
+                        String value = elem_steps.getValue(); // Get the value
+                        steps_actual.put(key, value);
+                    }
+                    break;
+                case "vaccines":
+                    List<String> vaccines_new = (List<String>) element.getValue();
+                    List<String> vaccines_actual = (List<String>) this.health_info.get("vaccines");
+                    for (String vaccine : vaccines_new) {
+                        vaccines_actual.add(vaccine);
+                    }
+                    break;
+            }
+        }
     }
-
 
     public Integer getHeight() {
         return height;

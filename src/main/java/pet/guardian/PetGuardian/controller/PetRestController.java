@@ -3,11 +3,19 @@ package pet.guardian.PetGuardian.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import pet.guardian.PetGuardian.model.Pet;
 import pet.guardian.PetGuardian.service.api.PetServiceAPI;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/pet")
@@ -36,7 +44,7 @@ public class PetRestController {
     public ResponseEntity<Object> createPetHealthInfo(@PathVariable String id, @RequestBody Pet pet) throws Exception {
         Pet new_pet = petServiceAPI.get(id);
         new_pet.addHealth_InfoElement(pet.getHealth_info());
-        return new ResponseEntity<>(new_pet,HttpStatus.OK);
+        return new ResponseEntity<>(petServiceAPI.save(new_pet, id), HttpStatus.OK);
     }
 
     @PatchMapping("/update/{id}")
