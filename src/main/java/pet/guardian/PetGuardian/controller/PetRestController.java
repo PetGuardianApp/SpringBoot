@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import pet.guardian.PetGuardian.model.Pet;
 import pet.guardian.PetGuardian.service.api.PetServiceAPI;
 
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/pet")
@@ -36,7 +35,7 @@ public class PetRestController {
     public ResponseEntity<Object> createPetHealthInfo(@PathVariable String id, @RequestBody Pet pet) throws Exception {
         Pet new_pet = petServiceAPI.get(id);
         new_pet.addHealth_InfoElement(pet.getHealth_info());
-        return new ResponseEntity<>(new_pet,HttpStatus.OK);
+        return new ResponseEntity<>(new_pet, HttpStatus.OK);
     }
 
     @PatchMapping("/update/{id}")
@@ -82,6 +81,9 @@ public class PetRestController {
         }
         if (pet.getClient_id() != null) {
             petToUpdate.setClient_id(pet.getClient_id());
+        }
+        if(pet.getProfile_image() != null){
+            petToUpdate.setProfile_image(pet.getProfile_image());
         }
         return petToUpdate;
     }
