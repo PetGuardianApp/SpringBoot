@@ -128,6 +128,8 @@ public class ClientRestController {
             clientToUpdate.setSurnames(client.getSurnames());
         if (client.getAddress() != null)
             clientToUpdate.setAddress(client.getAddress());
+        if (client.getProfile_image() != null)
+            clientToUpdate.setProfile_image(client.getProfile_image());
         return clientToUpdate;
     }
 }

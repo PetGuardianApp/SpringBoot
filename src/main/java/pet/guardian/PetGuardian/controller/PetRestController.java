@@ -91,6 +91,9 @@ public class PetRestController {
         if (pet.getClient_id() != null) {
             petToUpdate.setClient_id(pet.getClient_id());
         }
+        if(pet.getProfile_image() != null){
+            petToUpdate.setProfile_image(pet.getProfile_image());
+        }
         return petToUpdate;
     }
 }
