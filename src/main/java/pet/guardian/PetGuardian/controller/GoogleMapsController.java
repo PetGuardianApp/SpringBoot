@@ -18,16 +18,18 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("")
 public class GoogleMapsController {
     @GetMapping(value = "/getNearbySearch")
-    public ResponseEntity<Object> getNearbySearch(@RequestHeader String location, @RequestHeader String radius,
-                                                  @RequestHeader String type) throws Exception {
+    public ResponseEntity<Object> getNearbySearch(@RequestHeader String keyword,@RequestHeader String location,
+                                                  @RequestHeader String radius, @RequestHeader String type)
+            throws Exception {
         // URL de la API de Google Maps
         String apiUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
-                "location=" + location +
+                "?keyword=" + keyword +
+                "&location=" + location +
                 "&radius=" + radius +
                 "&type=" + type +
                 "&key=AIzaSyAouWao_x1bulJ9RkrfYpYP49u2a9RzSXw";
 
-        // Crear la URL y abrir la conexión
+        // Crear la URL y abrir la conexiÃ³n
         URL url = new URL(apiUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
