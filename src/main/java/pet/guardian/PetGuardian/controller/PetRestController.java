@@ -94,6 +94,9 @@ public class PetRestController {
         if(pet.getProfile_image() != null){
             petToUpdate.setProfile_image(pet.getProfile_image());
         }
+        if(pet.getUbi() != null){
+            petToUpdate.setUbi(pet.getUbi());
+        }
         return petToUpdate;
     }
 }

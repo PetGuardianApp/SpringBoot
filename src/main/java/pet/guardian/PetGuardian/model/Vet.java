@@ -1,7 +1,5 @@
 package pet.guardian.PetGuardian.model;
 
-import com.google.cloud.firestore.GeoPoint;
-
 import java.util.HashMap;
 import java.util.Map;
 

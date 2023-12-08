@@ -14,6 +14,7 @@ public class Pet {
     String type;
     String vet_id;
     String client_id;
+    String ubi;
     private String profile_image;
 
     public String getBirth() {
@@ -22,6 +23,14 @@ public class Pet {
 
     public void setBirth(String birth) {
         this.birth = birth;
+    }
+
+    public String getUbi() {
+        return this.ubi;
+    }
+
+    public void setUbi(String ubi) {
+        this.ubi = ubi;
     }
 
     public String getBreed() {

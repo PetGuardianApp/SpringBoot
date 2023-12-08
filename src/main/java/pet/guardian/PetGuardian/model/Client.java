@@ -1,6 +1,8 @@
 package pet.guardian.PetGuardian.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Client {
@@ -11,7 +13,19 @@ public class Client {
     private Map<String, String> address = new HashMap<>();
 
     private String profile_image;
+    List<String> notifications = new ArrayList<>();
 
+    public List<String> getNotifications() {
+        return this.notifications;
+    }
+
+    public void setNotifications(List<String> notifications) {
+        this.notifications = notifications;
+    }
+
+    public void addNotification(String notification) {
+        this.notifications.add(notification);
+    }
     public String getName() {
         return name;
     }

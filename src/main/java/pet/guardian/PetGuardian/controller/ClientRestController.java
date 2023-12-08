@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -98,6 +99,13 @@ public class ClientRestController {
         return new ResponseEntity<>(clientServiceAPI.save(new_client, id), HttpStatus.OK);
     }
 
+    @PutMapping(value = "/add/{id}/notification")
+    public ResponseEntity<Object> addNotification(@PathVariable String id, @RequestBody String notification) throws Exception {
+        Client client = clientServiceAPI.get(id);
+        client.addNotification(notification);
+        return new ResponseEntity<>(clientServiceAPI.save(client, id), HttpStatus.OK);
+    }
+    
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Client> deleteClient(@PathVariable String id) throws Exception {
         List<PetDTO> pets = petServiceAPI.getAll();
