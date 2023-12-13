@@ -155,10 +155,17 @@ public class ClientRestController {
             clientToUpdate.setEmail(client.getEmail());
         if (client.getSurnames() != null)
             clientToUpdate.setSurnames(client.getSurnames());
-        if (client.getAddress() != null)
+        if (!client.getAddress().isEmpty())
             clientToUpdate.setAddress(client.getAddress());
         if (client.getProfile_image() != null)
             clientToUpdate.setProfile_image(client.getProfile_image());
+        if (!client.getNotifications().isEmpty())
+            if(client.getNotifications().get(0).equals("any")){
+                clientToUpdate.setNotifications(new ArrayList<>());
+            }
+            else{
+                clientToUpdate.setNotifications(client.getNotifications());
+            }
         return clientToUpdate;
     }
 }

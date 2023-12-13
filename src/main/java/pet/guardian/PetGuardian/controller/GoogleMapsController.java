@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/maps")
-@CrossOrigin("")
+@CrossOrigin("*")
 public class GoogleMapsController {
     @GetMapping(value = "/getNearbySearch")
     public ResponseEntity<Object> getNearbySearch(@RequestHeader String keyword,@RequestHeader String location,

@@ -53,8 +53,8 @@ public class PetRestController {
         return new ResponseEntity<>(petServiceAPI.save(new_pet, id), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Object> deleteVet(@PathVariable String id) throws Exception {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deletePet(@PathVariable String id) throws Exception {
         Pet pet = petServiceAPI.get(id);
         if (pet != null)
             petServiceAPI.delete(id);
@@ -73,10 +73,10 @@ public class PetRestController {
         if (pet.getBreed() != null) {
             petToUpdate.setBreed(pet.getBreed());
         }
-        if (pet.getWeight() != null) {
+        if (!pet.getWeight().isEmpty()) {
             petToUpdate.setWeight(pet.getWeight());
         }
-        if (pet.getHealth_info() != null) {
+        if (!pet.getHealth_info().isEmpty()) {
             petToUpdate.setHealth_info(pet.getHealth_info());
         }
         if (pet.getHeight() != null) {
