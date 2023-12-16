@@ -9,6 +9,15 @@ public class Vet {
     String name;
     String surname;
     Integer phone;
+    String message;
+
+    public String getMessage() {
+        return this.message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public Map<String, String> getClinic_address() {
         return clinic_address;

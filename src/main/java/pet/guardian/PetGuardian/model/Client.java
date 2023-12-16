@@ -11,7 +11,15 @@ public class Client {
     private String email;
     private String surnames;
     private Map<String, String> address = new HashMap<>();
+    private String message;
 
+    public String getMessage() {
+        return this.message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
     private String profile_image;
     List<String> notifications = new ArrayList<>();
 

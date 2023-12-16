@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pet.guardian.PetGuardian.dto.AppointmentsDTO;
 import pet.guardian.PetGuardian.dto.ClientDTO;
 import pet.guardian.PetGuardian.dto.PetDTO;
+import pet.guardian.PetGuardian.model.Client;
 import pet.guardian.PetGuardian.model.Vet;
 import pet.guardian.PetGuardian.service.api.AppointmentsServiceAPI;
 import pet.guardian.PetGuardian.service.api.ClientServiceAPI;
@@ -65,6 +66,31 @@ public class VetRestController {
             }
         }
         return new ResponseEntity<Object>(clients, HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/add/{id}/message")
+    public ResponseEntity<Object> addMessage(@PathVariable String id, @RequestBody String message)
+            throws Exception {
+        Client client = clientServiceAPI.get(id);
+        client.setMessage(message);
+        return new ResponseEntity<>(clientServiceAPI.save(client, id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/get/{id}/message")
+    public ResponseEntity<Object> getMessage(@PathVariable String id)
+            throws Exception {
+        Vet vet = vetServiceAPI.get(id);
+        String message = vet.getMessage();
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/update/{id}/message")
+    public ResponseEntity<Object> updateMessage(@PathVariable String id) throws Exception {
+        Vet vet = vetServiceAPI.get(id);
+
+        // Update the message field to an empty string
+        vet.setMessage("");
+        return new ResponseEntity<>(vetServiceAPI.save(vet, id), HttpStatus.OK);
     }
 
     @GetMapping(value = "/findAppointments/{id}")

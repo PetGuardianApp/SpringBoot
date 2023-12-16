@@ -24,6 +24,7 @@ import pet.guardian.PetGuardian.dto.AppointmentsDTO;
 import pet.guardian.PetGuardian.dto.PetDTO;
 import pet.guardian.PetGuardian.dto.VetDTO;
 import pet.guardian.PetGuardian.model.Client;
+import pet.guardian.PetGuardian.model.Vet;
 import pet.guardian.PetGuardian.service.api.AppointmentsServiceAPI;
 import pet.guardian.PetGuardian.service.api.ClientServiceAPI;
 import pet.guardian.PetGuardian.service.api.PetServiceAPI;
@@ -124,6 +125,31 @@ public class ClientRestController {
             throws Exception {
         Client client = clientServiceAPI.get(id);
         client.addNotification(notification);
+        return new ResponseEntity<>(clientServiceAPI.save(client, id), HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/add/{id}/message")
+    public ResponseEntity<Object> addMessage(@PathVariable String id, @RequestBody String message)
+            throws Exception {
+        Vet vet = vetServiceAPI.get(id);
+        vet.setMessage(message);
+        return new ResponseEntity<>(vetServiceAPI.save(vet, id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/get/{id}/message")
+    public ResponseEntity<Object> getMessage(@PathVariable String id)
+            throws Exception {
+        Client client = clientServiceAPI.get(id);
+        String message = client.getMessage();
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/update/{id}/message")
+    public ResponseEntity<Object> updateMessage(@PathVariable String id) throws Exception {
+        Client client = clientServiceAPI.get(id);
+        
+        // Update the message field to an empty string
+        client.setMessage("");
         return new ResponseEntity<>(clientServiceAPI.save(client, id), HttpStatus.OK);
     }
 
